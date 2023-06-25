@@ -39,5 +39,6 @@ while( 1 ):
     message = str(event);
     sock.sendto(bytes(message, "utf-8"),(IP,PORT))
     print(message)
+    print(IP)
 
 GPIO.cleanup(); # Clean up
