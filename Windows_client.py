@@ -38,7 +38,7 @@ while(1):
     message,address = sock.recvfrom(MAX_DGRAM)
     data = message.decode().split(',')
     event = create_mouse_event(data)
-    event.__print__()
+    #event.__print__()
     check = event.timestamp - old_event.timestamp
     old_event = event
 
@@ -55,40 +55,41 @@ while(1):
             if(event.val == 1):
                 mouse.press(Button.left)
                 print("LEFT BUTTON PRESSED")
-            else:
+            if(event.val == 0):
                 mouse.release(Button.left)
                 print("LEFT BUTTON RELEASED")
         case 273:
             if(event.val == 1):
                 mouse.press(Button.right)
                 print("RIGHT BUTTON PRESSED")
-            else:
+            if(event.val == 0):
                 mouse.release(Button.right)
                 print("RIGHT BUTTON RELEASED")
         case 274:
             if(event.val == 1):
                 mouse.press(Button.middle)
                 print("MIDDLE BUTTON PRESSED")
-            else:
+            if(event.val == 0):
                 mouse.release(Button.middle)
                 print("MIDDLE BUTTON RELEASED")
         case 275:
             if(event.val == 1):
                 mouse.press(Button.x1)
                 print("BACK BUTTON PRESSED")
-            else:
+            if(event.val == 0):
                 mouse.release(Button.x1)
                 print("BACK BUTTON RELEASED")
         case 276:
             if(event.val == 1):
                 mouse.press(Button.x2)
                 print("FORWARD BUTTON PRESSED")
-            else:
+            if(event.val == 0):
                 mouse.release(Button.x2)
                 print("FORWARD BUTTON RELEASED")        
         case 8:
             mouse.scroll(0,event.val)
             print("SCROLL EVENT")
         case _:
-            event.__print__()
+            #event.__print__()
+            pass
 
