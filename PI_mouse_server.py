@@ -13,15 +13,17 @@ class Computer():
   ip = "0.0.0.0"
   name = "none"
   res = (0,0)
-  def __init__(self,i,n,r):
+  location= (0,0)
+  def __init__(self,i,n,r,l):
     self.ip = i
     self.name = n
     self.res = r
+    self.location = l
     
     
 computers = list()
-computers.append(Computer("192.168.1.162","tepes-pc",(5360,1440)))
-computers.append(Computer("10.0.0.8","tepes-mac",(3456,2234)))
+computers.append(Computer("192.168.1.162","tepes-pc",(5360,1440),(0,0)))
+computers.append(Computer("10.0.0.8","tepes-mac",(3456,2234),(1,0)))
 
 def next_computer():
   global index
