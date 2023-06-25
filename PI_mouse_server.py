@@ -12,17 +12,18 @@ IP = IPs[index];
 class Computer():
   ip = "0.0.0.0"
   name = "none"
-  vres = 0
-  def __init__(self,i,n,v):
+  res = (0,0)
+  def __init__(self,i,n,r):
     self.ip = i
     self.name = n
-    self.vres = v
+    self.res = r
+    
     
 computers = list()
-computers.append(Computer("192.168.1.162","tepes-pc",1440))
-computers.append(Computer("10.0.0.8","tepes-mac",2234))
+computers.append(Computer("192.168.1.162","tepes-pc",(5360,1440)))
+computers.append(Computer("10.0.0.8","tepes-mac",(3456,2234)))
 
-def next_IP():
+def next_computer():
   global index
   index = index + 1;
   try:
@@ -33,7 +34,7 @@ def next_IP():
   print("switching to client "+IP);
 
 def button_callback(channel):
-  next_IP();
+  next_computer();
 dev = InputDevice('/dev/input/event1');
 PORT = 50000
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM); # UDP
