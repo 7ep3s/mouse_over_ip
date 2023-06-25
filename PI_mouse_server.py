@@ -37,8 +37,8 @@ while( 1 ):
 
   for event in dev.read():
     message = str(event);
-    sock.sendto(bytes(message, "utf-8"),(IP,PORT))
+    sock.sendto(bytes(message, "utf-8"),(IPs[index],PORT))
     print(message)
-    print(IP)
+    print(IPs[index])
 
 GPIO.cleanup(); # Clean up
