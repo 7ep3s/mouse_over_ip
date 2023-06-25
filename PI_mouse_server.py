@@ -9,14 +9,27 @@ IPs = ["192.168.1.162","10.0.0.8"];
 index = 0;
 IP = IPs[index];
 
+class Computer():
+  ip = "0.0.0.0"
+  name = "none"
+  vres = 0
+  def __init__(self,i,n,v):
+    self.ip = i
+    self.name = n
+    self.vres = v
+    
+computers = list()
+computers.append(Computer("192.168.1.162","tepes-pc",1440))
+computers.append(Computer("10.0.0.8","tepes-mac",2234))
+
 def next_IP():
   global index
   index = index + 1;
   try:
-    IP = IPs[index];
+    IP = computers[index].ip;
   except:
     index = 0;
-    IP = IPs[index];
+    IP = computers[index].ip;
   print("switching to client "+IP);
 
 def button_callback(channel):
@@ -37,8 +50,8 @@ while( 1 ):
 
   for event in dev.read():
     message = str(event);
-    sock.sendto(bytes(message, "utf-8"),(IPs[index],PORT))
+    sock.sendto(bytes(message, "utf-8"),(computers[index].ip,PORT))
     print(message)
-    print(IPs[index])
+    print(computers[index].ip)
 
 GPIO.cleanup(); # Clean up
