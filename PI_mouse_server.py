@@ -6,6 +6,7 @@ from evdev import InputDevice, ecodes
 from select import select
 
 index = 0;
+input = 0;
 
 class Computer():
   ip = "0.0.0.0"
@@ -20,8 +21,8 @@ class Computer():
     
     
 computers = list()
-#computers.append(Computer("put ip here","no name",(1234,456),(0,0)))
-#computers.append(Computer("put ip here","no namec",(2342,43242),(1,0)))
+computers.append(Computer("192.168.1.162","no name",(1234,456),(0,0)))
+computers.append(Computer("10.0.0.8","no namec",(2342,43242),(1,0)))
 
 def next_computer():
   global index
@@ -33,7 +34,7 @@ def next_computer():
   print("switching to client "+computers[index].ip);
 
 def button_callback(channel):
-  next_computer();
+  input = input + 1;
 dev = InputDevice('/dev/input/event1');
 PORT = 50000
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM); # UDP
@@ -49,6 +50,9 @@ while( 1 ):
   #message = input("Press enter to quit\n\n"); # Run until someone presses enter
 
   for event in dev.read():
+    if input > 0:
+      next_computer()
+      input = 0
     message = str(event);
     sock.sendto(bytes(message, "utf-8"),(computers[index].ip,PORT))
     print(message)
