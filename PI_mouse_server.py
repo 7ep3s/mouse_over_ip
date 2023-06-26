@@ -5,9 +5,7 @@ import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
 from evdev import InputDevice, ecodes
 from select import select
 
-IPs = ["192.168.1.162","10.0.0.8"];
 index = 0;
-IP = IPs[index];
 
 class Computer():
   ip = "0.0.0.0"
@@ -29,11 +27,10 @@ def next_computer():
   global index
   index = index + 1;
   try:
-    IP = computers[index].ip;
+    ip = computers[index].ip;
   except:
     index = 0;
-    IP = computers[index].ip;
-  print("switching to client "+IP);
+  print("switching to client "+computers[index].ip);
 
 def button_callback(channel):
   next_computer();
