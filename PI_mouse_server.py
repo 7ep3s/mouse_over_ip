@@ -34,6 +34,7 @@ def next_computer():
   print("switching to client "+computers[index].ip);
 
 def button_callback(channel):
+  global input
   input = input + 1;
 dev = InputDevice('/dev/input/event1');
 PORT = 50000
