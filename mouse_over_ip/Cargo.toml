@@ -3,6 +3,14 @@ name = "mouse_over_ip"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "moip_server"
+path = "src/server/main.rs"
+
+[[bin]]
+name = "moip_client"
+path = "src/server/main.rs"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
